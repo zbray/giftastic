@@ -1,8 +1,15 @@
 $(document).ready(function(){
 
 //Variables 
-var topics = ["general organa", "star wars rey", "star wars finn", "han solo", "luke skywalker", "lando calrissian"]
+var characters = ["general organa", "star wars rey", "star wars finn", "han solo", "luke skywalker", "lando calrissian"]
 
 // function 
+
+//On button click
+$("#userQuery").on("click", function(event){
+  event.preventDefault();
+  var charName = $("#userQuery").val().trim();
+
+})
 
 })
