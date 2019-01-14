@@ -6,8 +6,7 @@ var characters = ["Harry Potter", "Hermione Granger", "Ron Weasley "]
 // Function for Displaying Gifs
 function displayGifs(){
   var char = $(this).attr("data-name");
-  var limit = 9;
-  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + char + "&limit=10&api_key=N5OKJJ5Kx7gKlaYEZha1x3zZvZli3Wwd";
+  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + char + "&api_key=N5OKJJ5Kx7gKlaYEZha1x3zZvZli3Wwd&limit=10";
 
   $.ajax({
     url: queryURL,
@@ -15,15 +14,12 @@ function displayGifs(){
   }).then(function(response){
 
     for (var i = 0; i < 10; i++) {
-      var charDiv = $("<div class ='character'>");
-      
+      var charDiv = $("<div class='character'>");
+      debugger;
       //Creates gifs from image url and attaches attributes needed for app and alt text for fun
       var image = $("<img>");
-      image.attr("src", response.data[i].images.fixed_height.url);
+      image.attr("src", response.data[i].images.original_still.url);
       image.attr("alt", "HAPPEE BIRTHDAE HARRY");
-      image.attr("data-still", response.data[i].images.original_still.url);
-      image.attr("data-animate", response.data[i].images.original.url);
-      image.attr("data-state", "still");
       charDiv.append(image);
 
       //Saves gif rating to a variable and places it above actual gif
