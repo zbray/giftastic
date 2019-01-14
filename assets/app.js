@@ -17,6 +17,7 @@ function displayGifs(){
     for (var i = 0; i < 10; i++) {
       var displayGif = $("<div class ='character'>");
       
+      //Creates gifs from image url and attaches attributes needed for app and alt text for fun
       var gifImage = $("<img>");
       gifImage.attr("src", response.data[i].images.fixed_height.url);
       gifImage.attr("alt", "HAPPEE BIRTHDAE HARRY");
@@ -25,16 +26,10 @@ function displayGifs(){
       gifImage.attr("data-state", "still");
       displayGif.append(gifImage);
 
+      //Saves gif rating to a variable and places it above actual gif
       var rating = response.data[i].rating;
-      
-
       var p = $("<p>").text("Rating: " + rating);
-
-      var gifImage = $("<img>");
-      
-
       displayGif.prepend(p);
-      displayGif.prepend(gifImage);
 
       $("#gifsview").prepend(gifDiv);
     }
