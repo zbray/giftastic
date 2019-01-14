@@ -14,26 +14,31 @@ function displayGifs(){
     method: "GET"
   }).then(function(response){
 
-    for (var i = 0; i < results.length; i++) {
-      var gifDiv = $("<div class ='character'>");
-
-      var rating = results[i].rating;
+    for (var i = 0; i < 10; i++) {
+      var displayGif = $("<div class ='character'>");
+      
+      var gifImage = $("<img>");
+      gifImage.attr("src", response.data[i].images.fixed_height.url);
+      gifImage.attr("alt", "HAPPEE BIRTHDAE HARRY");
+      gifImage.attr("data-still", response.data[i].images.original_still.url);
+      gifImage.attr("data-animate", response.data[i].images.original.url);
+      var rating = response.data[i].rating;
+      
 
       var p = $("<p>").text("Rating: " + rating);
 
       var gifImage = $("<img>");
-      gifImage.attr("src", results[i].images.fixed_height.url);
+      
 
-      gifDiv.prepend(p);
-      gifDiv.prepend(gifImage);
+      displayGif.prepend(p);
+      displayGif.prepend(gifImage);
 
       $("#gifsview").prepend(gifDiv);
     }
 
-    gifImage.attr("src", imageUrl);
-    gifImage.attr("alt", "punch it, chewey");
+    
 
-    $("#gifsview").prepent(gifDvi);
+    $("#gifsview").prepent(displayGif);
     
   })
 }
