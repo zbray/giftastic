@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 //Initial list of
-var initChars = ["harry potter", "hermione granger", "ron weasley "]
+var charButtons = ["harry potter", "hermione granger", "ron weasley "]
 
 
 // Function for Displaying Gifs
@@ -35,23 +35,19 @@ function displayGifs(){
 
       $("#gifsview").prepend(gifDiv);
     }
-
-    
-
-    $("#gifsview").prepent(displayGif);
     
   })
 }
 
-// Function for Displaying Buttons
+//Function for Rendering Buttons to Webpage
 
+//Function to change the state of gifs, faking play/pause
 
-//On button click
+//EventListener for submit button to push user entry into charButtons array
 
+//Calling the function to render the buttons when page loads
 
-//Calling the displayGifs function everytime an element with the charGif id is clicked.
-
-
+//EventListener for clicks on gifs to call the changeState function
 
 
 })
