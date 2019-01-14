@@ -6,27 +6,29 @@ var characters = ["Harry Potter", "Hermione Granger", "Ron Weasley "]
 // Function for Displaying Gifs
 function displayGifs(){
   var char = $(this).attr("data-name");
-  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + char + "&api_key=N5OKJJ5Kx7gKlaYEZha1x3zZvZli3Wwd&limit=10";
+  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + char + "&api_key=N5OKJJ5Kx7gKlaYEZha1x3zZvZli3Wwd";
 
   $.ajax({
     url: queryURL,
     method: "GET"
   }).then(function(response){
-
+    var results = response.data;
     for (var i = 0; i < 10; i++) {
-      var charDiv = $("<div class='character'>");
-      debugger;
+      var charDiv = $("<div class ='character'>");
       //Creates gifs from image url and attaches attributes needed for app and alt text for fun
       var image = $("<img>");
-      image.attr("src", response.data[i].images.original_still.url);
+      image.attr("src", results[i].images.original_still.url);
       image.attr("alt", "HAPPEE BIRTHDAE HARRY");
+      image.attr("dataStill", results[i].images.original_still.url);
+      image.attr("dataAnimate", results[i].images.original.url);
+      image.attr("dataState", "still");
       charDiv.append(image);
 
       //Saves gif rating to a variable and places it above actual gif
       var rating = response.data[i].rating;
       var p = $("<p>").text("Rating: " + rating);
-      charDiv.prepend(p);
-      $("#gifsview").prepend(image);
+      charDiv.append(p);
+      $("#gifsview").prepend(charDiv);
     }
   })
 }
@@ -48,7 +50,14 @@ function renderButtons(){
 
 //Function to change the state of gifs, faking play/pause
 function changeState(){
-  
+  var state = $(this).attr("dataState");
+  if (state === "still"){
+    $(this).attr("src", $(this).attr("dataAnimate"));
+    $(this).attr("dataState", "animate");
+  }else if (state === "animate") {
+    $(this).attr("src", $(this).attr("dataStill"));
+    $(this).attr("dataState", "still");
+  }
 }
 
 //EventListener for submit button to push user entry into charButtons array
