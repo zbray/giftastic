@@ -22,6 +22,9 @@ function displayGifs(){
       gifImage.attr("alt", "HAPPEE BIRTHDAE HARRY");
       gifImage.attr("data-still", response.data[i].images.original_still.url);
       gifImage.attr("data-animate", response.data[i].images.original.url);
+      gifImage.attr("data-state", "still");
+      displayGif.append(gifImage);
+
       var rating = response.data[i].rating;
       
 
@@ -40,8 +43,15 @@ function displayGifs(){
 }
 
 //Function for Rendering Buttons to Webpage
+function renderButtons(){
+
+}
+
 
 //Function to change the state of gifs, faking play/pause
+function changeState(){
+  
+}
 
 //EventListener for submit button to push user entry into charButtons array
 
