@@ -1,12 +1,12 @@
 $(document).ready(function(){
 
-//Initial list of
-var characters = ["harry potter", "hermione granger", "ron weasley "]
-
+//Global Variables
+var characters = ["Harry Potter", "Hermione Granger", "Ron Weasley "]
 
 // Function for Displaying Gifs
 function displayGifs(){
   var char = $(this).attr("data-name");
+  var limit = 9;
   var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + char + "&limit=10&api_key=N5OKJJ5Kx7gKlaYEZha1x3zZvZli3Wwd";
 
   $.ajax({
@@ -15,25 +15,23 @@ function displayGifs(){
   }).then(function(response){
 
     for (var i = 0; i < 10; i++) {
-      var displayGif = $("<div class ='character'>");
+      var charDiv = $("<div class ='character'>");
       
       //Creates gifs from image url and attaches attributes needed for app and alt text for fun
-      var gifImage = $("<img>");
-      gifImage.attr("src", response.data[i].images.fixed_height.url);
-      gifImage.attr("alt", "HAPPEE BIRTHDAE HARRY");
-      gifImage.attr("data-still", response.data[i].images.original_still.url);
-      gifImage.attr("data-animate", response.data[i].images.original.url);
-      gifImage.attr("data-state", "still");
-      displayGif.append(gifImage);
+      var image = $("<img>");
+      image.attr("src", response.data[i].images.fixed_height.url);
+      image.attr("alt", "HAPPEE BIRTHDAE HARRY");
+      image.attr("data-still", response.data[i].images.original_still.url);
+      image.attr("data-animate", response.data[i].images.original.url);
+      image.attr("data-state", "still");
+      charDiv.append(image);
 
       //Saves gif rating to a variable and places it above actual gif
       var rating = response.data[i].rating;
       var p = $("<p>").text("Rating: " + rating);
-      displayGif.prepend(p);
-
-      $("#gifsview").prepend(gifDiv);
+      charDiv.prepend(p);
+      $("#gifsview").prepend(image);
     }
-    
   })
 }
 
@@ -43,12 +41,11 @@ function renderButtons(){
   $("#buttonsView").empty();
 
   for(var j = 0; j < characters.length; j++){
-
     var c = $("<button>");
     c.addClass("charButton");
     c.attr("data-name", characters[j]);
-    c.text(characters[i]);
-    $("#buttons-view").append(c);
+    c.text(characters[j]);
+    $("#buttonsView").append(c);
   }
 }
 
@@ -59,9 +56,19 @@ function changeState(){
 }
 
 //EventListener for submit button to push user entry into charButtons array
+$("#addChar").on("click", function(event){
+  event.preventDefault();
+  var gif = $("#charInput").val().trim();
+  characters.push(gif);
+  renderButtons();
+  return false;
+
+})
+
+$(document).on("click", ".charButton", displayGifs);
 
 //Calling the function to render the buttons when page loads
-
+renderButtons();
 //EventListener for clicks on gifs to call the changeState function
 
 
