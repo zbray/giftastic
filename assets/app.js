@@ -1,23 +1,21 @@
 $(document).ready(function(){
 
-//Per instructions, a themed array of gif search
-var characters = ["general organa", "star wars rey", "star wars finn", "han solo", "luke skywalker", "lando calrissian"]
+//Initial list of
+var initChars = ["harry potter", "hermione granger", "ron weasley "]
 
-// Function for Displaying User-Generated Character Names
+
+// Function for Displaying Gifs
 function displayGifs(){
   var char = $(this).attr("data-name");
-  var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=N5OKJJ5Kx7gKlaYEZha1x3zZvZli3Wwd&tag=" + char + "&limit=10";
+  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + char + "&limit=10&api_key=N5OKJJ5Kx7gKlaYEZha1x3zZvZli3Wwd";
 
   $.ajax({
     url: queryURL,
     method: "GET"
   }).then(function(response){
-    var results = response.data;
-    var gifURL = response.data.image_original_url;
 
-    For loop to return create gifs for each user query
     for (var i = 0; i < results.length; i++) {
-      var gifDiv = $("<div>");
+      var gifDiv = $("<div class ='character'>");
 
       var rating = results[i].rating;
 
@@ -40,19 +38,14 @@ function displayGifs(){
   })
 }
 
-// Function for Displaying Gifs
+// Function for Displaying Buttons
+
 
 //On button click
-$("#userQuery").on("click", function(event){
-  event.preventDefault();
-  var charName = $("#userQuery").val().trim();
-  characters.push(charName);
-  renderGifs();
 
-});
 
 //Calling the displayGifs function everytime an element with the charGif id is clicked.
-$(document).on("click", ".charGif", displayGifs);
+
 
 
 
