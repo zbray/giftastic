@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 //Initial list of
-var charButtons = ["harry potter", "hermione granger", "ron weasley "]
+var characters = ["harry potter", "hermione granger", "ron weasley "]
 
 
 // Function for Displaying Gifs
@@ -40,6 +40,16 @@ function displayGifs(){
 //Function for Rendering Buttons to Webpage
 function renderButtons(){
 
+  $("#buttonsView").empty();
+
+  for(var j = 0; j < characters.length; j++){
+
+    var c = $("<button>");
+    c.addClass("charButton");
+    c.attr("data-name", characters[j]);
+    c.text(characters[i]);
+    $("#buttons-view").append(c);
+  }
 }
 
 
