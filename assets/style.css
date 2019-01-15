@@ -1,4 +1,13 @@
-.character{
-    border: black 2px solid;
-    width: auto;
-}
+body {
+    background-image: url("../images/background.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-attachment: fixed;
+  }
+
+rting {text-transform: uppercase}
+

@@ -1,13 +1,14 @@
 $(document).ready(function(){
 
 //Global Variables
-var characters = ["Harry Potter", "Hermione Granger", "Ron Weasley "]
+var characters = ["Harry Potter", "Hermione Granger", "Ron Weasley"]
 
 // Function for Displaying Gifs
 function displayGifs(){
   var char = $(this).attr("data-name");
   var queryURL = "https://api.giphy.com/v1/gifs/search?&api_key=N5OKJJ5Kx7gKlaYEZha1x3zZvZli3Wwd&q=" + char;
 
+  //AJAX call
   $.ajax({
     url: queryURL,
     method: "GET"
@@ -42,9 +43,7 @@ function displayGifs(){
 
 //Function for Rendering Buttons to Webpage
 function renderButtons(){
-
   $("#buttonsView").empty();
-
   for(var j = 0; j < characters.length; j++){
     var c = $("<button>");
     c.addClass("charButton");
