@@ -17,12 +17,12 @@ function displayGifs(){
     for (var i = 0; i < 10; i++) {
       var charDiv = $("<div class='character'>");
       //Creates gifs from image url and attaches attributes needed for app and alt text for fun
-      var image = $("<img>");
+      var image = $("<img class='ani'>");
       image.attr("src", results[i].images.original_still.url);
       image.attr("alt", "HAPPEE BIRTHDAE HARRY");
-      // image.attr("dataStill", results[i].images.original_still.url);
-      // image.attr("dataAnimate", results[i].images.original.url);
-      // image.attr("dataState", "still");
+      image.attr("dataStill", results[i].images.original_still.url);
+      image.attr("dataAnimate", results[i].images.original.url);
+      image.attr("dataState", "still");
       charDiv.append(image);
 
       //Saves gif rating to a variable and places it above actual gif
@@ -48,7 +48,6 @@ function renderButtons(){
   }
 }
 
-
 //Function to change the state of gifs, faking play/pause
 function changeState(){
   var state = $(this).attr("dataState");
@@ -68,7 +67,6 @@ $("#addChar").on("click", function(event){
   characters.push(gif);
   renderButtons();
   return false;
-
 })
 
 $(document).on("click", ".charButton", displayGifs);
@@ -76,6 +74,5 @@ $(document).on("click", ".charButton", displayGifs);
 //Calling the function to render the buttons when page loads
 renderButtons();
 //EventListener for clicks on gifs to call the changeState function
-
-
+$(document).on("click", ".ani", changeState);
 })
