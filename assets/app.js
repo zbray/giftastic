@@ -23,11 +23,17 @@ function displayGifs(){
       image.attr("dataStill", results[i].images.original_still.url);
       image.attr("dataAnimate", results[i].images.original.url);
       image.attr("dataState", "still");
-      charDiv.append(image);
 
-      //Saves gif rating to a variable and places it above actual gif
+
+      //Saves each gif's title and rating
       var rating = response.data[i].rating;
       var p = $("<p>").text("Rating: " + rating);
+      var title = response.data[i].title;
+      var t = $("<p>").text("Title: " + title);
+
+      //Appends gif image, then gif title, then gif rating onto the div on the page
+      charDiv.append(t);
+      charDiv.append(image);
       charDiv.append(p);
       $("#gifsView").prepend(charDiv);
     }
