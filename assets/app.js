@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 //Global Variables
-var characters = ["Harry Potter", "Hermione Granger", "Ron Weasley"]
+var characters = ["Harry Potter", "Hermione Granger", "Ron Weasley", "The Once and Future King Dobby"]
 
 // Function for Displaying Gifs
 function displayGifs(){
