@@ -26,15 +26,17 @@ function displayGifs(){
       image.attr("dataState", "still");
 
 
-      //Saves each gif's title and rating
+      //Saves the title and rating of each gif and stores them in a new p tag
       var rating = response.data[i].rating;
       var p = $("<p>").text("Rating: " + rating);
       var title = response.data[i].title;
       var t = $("<p>").text("Title: " + title);
+    
+      //Create a download button for each gif
 
-      //Appends gif image, then gif title, then gif rating onto the div on the page
-      charDiv.append(t);
+      //Appends the gif's image, title and rating onto the div on the page
       charDiv.append(image);
+      charDiv.append(t);
       charDiv.append(p);
       $("#gifsView").prepend(charDiv);
     }
@@ -74,10 +76,12 @@ $("#addChar").on("click", function(event){
   return false;
 })
 
-$(document).on("click", ".charButton", displayGifs);
-
 //Calling the function to render the buttons when page loads
 renderButtons();
+
+//EventListener on buttons that create buttons for the selected character
+$(document).on("click", ".charButton", displayGifs);
+
 //EventListener for clicks on gifs to call the changeState function
 $(document).on("click", ".ani", changeState);
 })
