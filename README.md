@@ -17,10 +17,10 @@ HTML, CSS, JavaScript, jQuery, Giphy API
 
 ### GitHub Pages Deployment
 
-https://zzzbray.github.io/giftastic/
+https://zbray.github.io/giftastic/
 
 ### References
-This repo is currently displayed on my [porfolio](https://zzzbray.github.io/bootstrapPortfolio/portfolio.html) and its [repo](https://github.com/zzzbray/bootstrapPortfolio).
+This repo is currently displayed on my [porfolio](https://zbray.github.io/bootstrapPortfolio/portfolio.html) and its [repo](https://github.com/zbray/bootstrapPortfolio).
 
 
 &copy; 2018 zzzbray
