@@ -23,4 +23,4 @@ https://zbray.github.io/giftastic/
 This repo is currently displayed on my [porfolio](https://zbray.github.io/bootstrapPortfolio/portfolio.html) and its [repo](https://github.com/zbray/bootstrapPortfolio).
 
 
-&copy; 2018 zzzbray
+&copy; 2018 zbray
